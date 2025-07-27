@@ -28,9 +28,15 @@ body {
     line-height: 1.5;
     font-family: var(--font-family);
     background-color: var(--color-background);
+    padding-top: 54px;
 }
 
 nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-background);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
