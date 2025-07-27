@@ -20,6 +20,7 @@
     --color-accent: #4371fe;
     --color-text-dark: #202124;
     --color-text-light: #F6EEE3;
+    --color-text-green: #00635d;
 }
 
 body {
@@ -104,4 +105,37 @@ input[type="text"] {
 svg {
     height: 25px;
     width: 25px;
+}
+
+main {
+    width: 90vw;
+    height: 100vh;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: var(--font-size-base);
+    background: var(--color-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2.5rem;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.15);
+
+    > a {
+        height: 30px;
+
+        > .github-logo {
+            width: 30px;
+            height: 30px;
+        }
+    }
 }
