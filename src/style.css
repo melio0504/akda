@@ -119,7 +119,8 @@ main {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: white;
+    background-color: var(--color-light);
+    padding: 5px 10px 5px 10px;
 }
 
 footer {
