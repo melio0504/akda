@@ -13,11 +13,9 @@
     --font-size-lg: 1.25rem;
     --font-size-xl: 1.7rem;
     --color-background: #F6EEE3;
-    --color-primary: #375fd8;
-    --color-secondary: #86a1f4;
+    --color-secondary: #EDE6D6;
     --color-dark: #202124;
     --color-light: #FFFFFF;
-    --color-accent: #4371fe;
     --color-text-dark: #202124;
     --color-text-light: #F6EEE3;
     --color-text-green: #00635d;
@@ -44,9 +42,10 @@ nav {
     min-height: 50px;
     padding: 2px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    z-index: 1;
 }
 
-.siteHeader_logo {
+.header-logo {
     font-size: var(--font-size-xl);
     font-weight: bold;
 }
@@ -101,7 +100,7 @@ input[type="text"] {
     cursor: pointer;
 }
 
-.siteHeader_nav_right {
+.header-right {
     display: flex;
     align-items: center;
     margin-top: 4px;
@@ -120,7 +119,68 @@ main {
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: var(--color-light);
-    padding: 5px 10px 5px 10px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.main-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    height: 100%;
+    position: relative;
+}
+
+.main-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 17%;
+    border-right: 1px solid #D8D8D8;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    z-index: 0;
+}
+
+aside h1 {
+    color: var(--color-text-green);
+    font-size: var(--font-size-xl);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+aside h2 {
+    font-size: var(--font-size-lg);
+}
+
+#showAllBooks, #showWantToRed, #showCurrentlyReading, #showRead {
+    text-decoration: underline;
+    width: max-content;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font: var(--font-family);
+}
+
+#addBook {
+    margin-top: 20px;
+    width: 40%;
+    padding: 8px;
+    background-color: var(--color-background);
+    border: 1px solid #D6D0C4;
+    cursor: pointer;
+}
+
+#addBook:hover {
+    background-color: var(--color-secondary);
 }
 
 footer {
