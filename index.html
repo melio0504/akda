@@ -72,6 +72,41 @@
                 <button id="showRead">Read</button>
 
                 <button id="addBook">Add Book</button>
+
+                <dialog id="addBookForm">
+                    <form method="dialog" id="addNewBookForm">
+                        <h1 class="addBookHeader">Add Your New Book</h1>
+
+                        <label for="bookTitle">Book Title:</label>
+                        <input type="text" name="bookTitle" id="bookTitle">
+
+                        <label for="bookAuthor">Book Author:</label>
+                        <input type="text" name="bookAuthor" id="bookAuthor">
+
+                        <label for="bookAuthor">Pages:</label>
+                        <input type="text" name="bookPages" id="bookPages">
+
+                        <label for="bookAuthor">Status:</label>
+                        <input type="text" name="bookStatus" id="bookStatus">
+
+                        <label for="bookAuthor">Rating:</label>
+                        <input type="text" name="bookRating" id="bookRating">
+
+                        <label for="bookAuthor">Date Read:</label>
+                        <input type="date" name="bookDateRead" id="bookDateRead">
+
+                        <label for="bookAuthor">Date Added:</label>
+                        <input type="date" name="bookDateAdded" id="bookDateAdded">
+
+                        <label for="bookCoverImg">Book Cover (URL):</label>
+                        <input type="text" name="bookCoverImg" id="bookCoverImg">
+                        
+                        <div class="buttonContainer">
+                            <button id="addBookBtn">Add</button>
+                            <button id="closeBookForm">Close</button>
+                        </div>
+                    </form>
+                </dialog>
             </aside>
             <div class="book-container">
                 <article class="book-card">
