@@ -73,36 +73,49 @@
 
                 <button id="addBook">Add Book</button>
 
-                <dialog id="addBookForm">
+                <dialog closedby="any" id="addBookForm">
                     <form method="dialog" id="addNewBookForm">
                         <h1 class="addBookHeader">Add Your New Book</h1>
 
                         <label for="bookTitle">Book Title:</label>
-                        <input type="text" name="bookTitle" id="bookTitle">
+                        <input type="text" name="bookTitle" id="bookTitle" required>
 
                         <label for="bookAuthor">Book Author:</label>
-                        <input type="text" name="bookAuthor" id="bookAuthor">
+                        <input type="text" name="bookAuthor" id="bookAuthor" required>
 
-                        <label for="bookAuthor">Pages:</label>
-                        <input type="text" name="bookPages" id="bookPages">
+                        <label for="bookPages">Pages:</label>
+                        <input type="text" name="bookPages" id="bookPages" required>
 
-                        <label for="bookAuthor">Status:</label>
-                        <input type="text" name="bookStatus" id="bookStatus">
+                        <label for="bookStatus">Status:</label>
+                        <select name="bookStatus" id="bookStatus" required>
+                            <option value="Completed">Completed</option>
+                            <option value="Currently Reading">Currently Reading</option>
+                            <option value="Plan to Read">Plan to Read</option>
+                        </select>
 
-                        <label for="bookAuthor">Rating:</label>
-                        <input type="text" name="bookRating" id="bookRating">
+                        <label for="bookRating">Rating:</label>
+                        <div class="bookRatingContainer">
+                            <select name="bookRating" id="bookRating">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <span>/ 5</span>
+                        </div>
 
-                        <label for="bookAuthor">Date Read:</label>
-                        <input type="date" name="bookDateRead" id="bookDateRead">
+                        <label for="dateRead">Date Read:</label>
+                        <input type="date" name="bookDateRead" id="bookDateRead" required>
 
-                        <label for="bookAuthor">Date Added:</label>
-                        <input type="date" name="bookDateAdded" id="bookDateAdded">
+                        <label for="dateAdded">Date Added:</label>
+                        <input type="date" name="bookDateAdded" id="bookDateAdded" required>
 
-                        <label for="bookCoverImg">Book Cover (URL):</label>
+                        <label for="bookCoverImg">Book Cover Image URL (Optional):</label>
                         <input type="text" name="bookCoverImg" id="bookCoverImg">
                         
                         <div class="buttonContainer">
-                            <button id="addBookBtn">Add</button>
+                            <button type="submit" id="addBookBtn">Add</button>
                             <button id="closeBookForm">Close</button>
                         </div>
                     </form>
