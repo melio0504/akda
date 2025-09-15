@@ -78,13 +78,13 @@
                         <h1 class="addBookHeader">Add Your New Book</h1>
 
                         <label for="bookTitle">Book Title:</label>
-                        <input type="text" name="bookTitle" id="bookTitle" required>
+                        <input type="text" name="bookTitle" id="bookTitle" placeholder="Noli Me Tángere" required>
 
                         <label for="bookAuthor">Book Author:</label>
-                        <input type="text" name="bookAuthor" id="bookAuthor" required>
+                        <input type="text" name="bookAuthor" id="bookAuthor"  placeholder="José Rizal" required>
 
                         <label for="bookPages">Pages:</label>
-                        <input type="text" name="bookPages" id="bookPages" required>
+                        <input type="text" name="bookPages" id="bookPages" placeholder="444"  required>
 
                         <label for="bookStatus">Status:</label>
                         <select name="bookStatus" id="bookStatus" required>
@@ -100,7 +100,7 @@
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="5" selected>5</option>
                             </select>
                             <span>/ 5</span>
                         </div>
@@ -112,7 +112,7 @@
                         <input type="date" name="bookDateAdded" id="bookDateAdded" required>
 
                         <label for="bookCoverImg">Book Cover Image URL (Optional):</label>
-                        <input type="text" name="bookCoverImg" id="bookCoverImg">
+                        <input type="text" name="bookCoverImg" placeholder="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1309199939i/418285.jpg" id="bookCoverImg">
                         
                         <div class="buttonContainer">
                             <button type="submit" id="addBookBtn">Add</button>
