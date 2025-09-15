@@ -184,6 +184,7 @@ aside {
         width: 40vw;
         top: 3%;
         left: 30%;
+        border-color: var(--color-text-green);
 
         &::backdrop {
             backdrop-filter: blur(2px);
@@ -205,6 +206,21 @@ aside {
                 padding: 0.8em;
             }
 
+            > select {
+                padding: 0.6em;
+            }
+
+            & .bookRatingContainer {
+                display: flex;
+                gap: 10px;
+                align-items: center ;
+
+                & #bookRating {
+                    padding: 0.4em;
+                    width: 10%;
+                }
+            }
+
             .buttonContainer {
                 display: flex;
                 gap: 20px;
@@ -212,10 +228,15 @@ aside {
                 margin-top: 10px;
             
                 > button {
-                background-color: var(--color-secondary);
+                background-color: var(--color-background);
                 padding: 0.8em;
                 width: 5em;
-            }
+                cursor: pointer;
+                
+                    &:hover {
+                        background-color: var(--color-secondary);
+                    }
+                }
             }            
         }
     }
