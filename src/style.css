@@ -185,6 +185,11 @@ aside {
         top: 3%;
         left: 30%;
         border-color: var(--color-text-green);
+        border-radius: 15px;
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         &::backdrop {
             backdrop-filter: blur(2px);
