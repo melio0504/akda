@@ -113,7 +113,8 @@ nav {
 }
 
 main {
-    width: 1400px;
+    max-width: 1400px;
+    min-width: 300px;
     min-height: 580px;
     margin: auto;
     margin-top: 10px;
@@ -266,7 +267,6 @@ aside {
         gap: 20px;
         padding: 10px;
         height: max-content;
-        width: max-content;
         border: 1px solid black;
 
         img {
