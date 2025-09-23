@@ -1,3 +1,4 @@
+// Handle dialog behavior
 const addBookForm = document.querySelector('#addBookForm');
 const addNewBookForm = document.querySelector('#addNewBookForm');
 const openAddBookBtn = document.querySelector('#addBook');
@@ -7,20 +8,35 @@ openAddBookBtn.addEventListener('click', () => addBookForm.showModal());
 closeAddBookBtn.addEventListener('click', () => addBookForm.close());
 addBookForm.addEventListener('close', () => addNewBookForm.reset());
 
+// This will handle the form data and will pass as an argument
 document.querySelector('#addNewBookForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
+    const formData = new FormData(event.target);
 
+    const book = {
+        title: formData.get('bookTitle'),
+        author: formData.get('bookAuthor'),
+        pages: formData.get('bookPages'),
+        status: formData.get('bookStatus'),
+        rating: formData.get('bookRating'),
+        dateRead: formData.get('bookDateRead'),
+        dateAdded: formData.get('bookDateAdded'),
+        coverImg: formData.get('bookCoverImg')
+    };
+
+    addBookToLibrary(book);
+
+    addBookForm.close();
 });
 
-
-// The main library (Objects) with preset personalized books
+// The main library (Arrays) with preset personalized books
 const myLibrary = [
     {
         id: '3197f5b0-11a4-4050-a14c-4fa964dee160',
         title: 'Noli Me Tangere',
         author: 'Jose Rizal',
-        page: '444',
+        pages: '444',
         status: 'Completed',
         rating: '5',
         dateRead: '09-18-2025',
@@ -31,7 +47,7 @@ const myLibrary = [
         id: 'b3e18ec1-44ec-4149-95d4-ade104b72b67',
         title: 'Florante At Laura',
         author: 'Francisco Balagtas',
-        page: '110',
+        pages: '110',
         status: 'Completed',
         rating: '4',
         dateRead: '09-20-2025',
@@ -42,7 +58,7 @@ const myLibrary = [
         id: 'e7f5b1eb-074c-4183-8d85-75847c0e4a84',
         title: 'Oliver Twist',
         author: 'Charles Dickens',
-        page: '608',
+        pages: '608',
         status: 'Currently Reading',
         rating: '4',
         dateRead: '06-25-2025',
@@ -53,7 +69,7 @@ const myLibrary = [
         id: '24c76e12-c001-46bf-b2db-f4d936c90559',
         title: 'Anne of Green Gables',
         author: 'L.M. Montgomery',
-        page: '320',
+        pages: '320',
         status: 'Completed',
         rating: '5',
         dateRead: '01-25-2025',
@@ -64,40 +80,83 @@ const myLibrary = [
         id: '8c1fd992-a212-4323-b12c-121ea6964533',
         title: 'The Lord of the Rings',
         author: 'J.R.R. Tolkien',
-        page: '1216',
+        pages: '1216',
         status: 'Want to read',
         rating: '5',
         dateRead: '01-25-2025',
         dateAdded: '07-10-2024',
-        coverURL: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1615094578i/8127.jpg'
+        coverURL: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg'
     }
 ];
 
-function Book() {
+function Book(id, name, title, author, pages, status, rating, dateRead, dateAdded, coverURL) {
     this.id = id;
     this.name = name;
-    this.info = function() {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+    this.rating = rating;
+    this.dateRead = dateRead;
+    this.dateAdded = dateAdded;
 
+    this.info = function() {
+        addBookToLibrary();
     }
 };
 
-function addBookToLibrary() {
-    // Take parameters then create a book to store in the array
+function addBookToLibrary(book) {
+    myLibrary.push(book);
 };
 
-function displayBooks() {
-    let result = '';
+// Display the books in the DOM
+const bookContainer = document.querySelector('.book-container');
 
-    myLibrary.forEach(function(book) {
-        result += `<div><h3>` + book.title + book.author + book.page + book.status + book.rating + `</h3></div>`;
-    });
+myLibrary.forEach(book => {
+    const bookCard = document.createElement('article');
+    bookCard.classList.add('book-card');
 
-    document.querySelector('.blahblah').textContent = result;
+    const bookCover = document.createElement('div');
+    const img = document.createElement('img');
 
-    // Need to fix this
-}
+    img.src = book.coverURL;
+    bookCover.appendChild(img);
 
-// This will sort all the books showing
+    const bookInfo = document.createElement('div');
+    bookInfo.classList.add('book-info');
+
+    const title = document.createElement('p');
+    title.textContent = `Title: ${book.title}`;
+
+    const author = document.createElement('p');
+    author.textContent = `Author: ${book.author}`;
+
+    const pages = document.createElement('p');
+    pages.textContent = `Pages: ${book.pages}`;
+
+    const status = document.createElement('p');
+    status.textContent = `Status: ${book.status}`;
+
+    const rating = document.createElement('p');
+    rating.textContent = `Rating: ${book.rating}`;
+
+    const dateRead = document.createElement('p');
+    dateRead.textContent = `Date Read: ${book.dateRead}`;
+
+    const dateAdded = document.createElement('p');
+    dateAdded.textContent = `Date Added: ${book.dateAdded}`;
+
+    bookInfo.append(title, author, pages, status, rating, dateRead, dateAdded);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.id = 'removeBook';
+    removeBtn.textContent = '✍🏻';
+
+    bookCard.append(bookCover, bookInfo, removeBtn);
+    bookContainer.appendChild(bookCard);
+});
+
+// TODO: Sort feature implementation
 
 const showAllBooksBtn = document.querySelector('#showAllBooks');
 const showWantToReadBtn = document.querySelector('#showWantToRead');
