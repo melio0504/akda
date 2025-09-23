@@ -188,6 +188,7 @@ aside {
         left: 30%;
         border-color: var(--color-text-green);
         border-radius: 15px;
+        min-width: 400px;
         
         &::-webkit-scrollbar {
             display: none;
@@ -224,7 +225,7 @@ aside {
 
                 & #bookRating {
                     padding: 0.4em;
-                    width: 10%;
+                    min-width: 10%;
                 }
             }
 
