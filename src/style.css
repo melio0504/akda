@@ -211,6 +211,11 @@ aside {
 
             > input {
                 padding: 0.8em;
+
+                &::-webkit-outer-spin-button, 
+                &::-webkit-inner-spin-button {
+                    display: none;
+                }
             }
 
             > select {
