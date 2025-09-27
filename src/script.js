@@ -14,18 +14,16 @@ document.querySelector('#addNewBookForm').addEventListener('submit', function(ev
 
     const formData = new FormData(event.target);
 
-    const book = {
-        title: formData.get('bookTitle'),
-        author: formData.get('bookAuthor'),
-        pages: formData.get('bookPages'),
-        status: formData.get('bookStatus'),
-        rating: formData.get('bookRating'),
-        dateRead: formData.get('bookDateRead'),
-        dateAdded: formData.get('bookDateAdded'),
-        coverImg: formData.get('bookCoverImg')
-    };
-
-    addBookToLibrary(book);
+    addBookToLibrary(
+        formData.get('bookTitle'),
+        formData.get('bookAuthor'),
+        formData.get('bookPages'),
+        formData.get('bookStatus'),
+        formData.get('bookRating'),
+        formData.get('bookDateRead'),
+        formData.get('bookDateAdded'),
+        formData.get('bookCoverImg')
+    );
 
     addBookForm.close();
 });
@@ -89,9 +87,8 @@ const myLibrary = [
     }
 ];
 
-function Book(id, name, title, author, pages, status, rating, dateRead, dateAdded, coverURL) {
-    this.id = id;
-    this.name = name;
+function Book(title, author, pages, status, rating, dateRead, dateAdded, coverURL) {
+    this.id = crypto.randomUUID();
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -99,66 +96,74 @@ function Book(id, name, title, author, pages, status, rating, dateRead, dateAdde
     this.rating = rating;
     this.dateRead = dateRead;
     this.dateAdded = dateAdded;
-
-    this.info = function() {
-        addBookToLibrary();
-    }
+    this.coverURL = coverURL;
 };
 
-function addBookToLibrary(book) {
-    myLibrary.push(book);
+function addBookToLibrary(title, author, pages, status, rating, dateRead, dateAdded, coverURL) {
+    const newBook = new Book(title, author, pages, status, rating, dateRead, dateAdded, coverURL);
+
+    myLibrary.push(newBook);
+
+    renderLibrary();
 };
 
-// Display the books in the DOM
+// Display each books
 const bookContainer = document.querySelector('.book-container');
 
-myLibrary.forEach(book => {
-    const bookCard = document.createElement('article');
-    bookCard.classList.add('book-card');
+function renderLibrary() {
+    bookContainer.innerHTML = '';
 
-    const bookCover = document.createElement('div');
-    const img = document.createElement('img');
+    myLibrary.forEach(book => {
+        const bookCard = document.createElement('article');
+        bookCard.classList.add('book-card');
 
-    img.src = book.coverURL;
-    bookCover.appendChild(img);
+        const bookCover = document.createElement('div');
+        const img = document.createElement('img');
 
-    const bookInfo = document.createElement('div');
-    bookInfo.classList.add('book-info');
+        img.src = book.coverURL;
+        bookCover.appendChild(img);
 
-    const title = document.createElement('p');
-    title.textContent = `Title: ${book.title}`;
+        const bookInfo = document.createElement('div');
+        bookInfo.classList.add('book-info');
 
-    const author = document.createElement('p');
-    author.textContent = `Author: ${book.author}`;
+        const title = document.createElement('p');
+        title.textContent = `Title: ${book.title}`;
 
-    const pages = document.createElement('p');
-    pages.textContent = `Pages: ${book.pages}`;
+        const author = document.createElement('p');
+        author.textContent = `Author: ${book.author}`;
 
-    const status = document.createElement('p');
-    status.textContent = `Status: ${book.status}`;
+        const pages = document.createElement('p');
+        pages.textContent = `Pages: ${book.pages}`;
 
-    const rating = document.createElement('p');
-    rating.textContent = `Rating: ${book.rating}`;
+        const status = document.createElement('p');
+        status.textContent = `Status: ${book.status}`;
 
-    const dateRead = document.createElement('p');
-    dateRead.textContent = `Date Read: ${book.dateRead}`;
+        const rating = document.createElement('p');
+        rating.textContent = `Rating: ${book.rating}`;
 
-    const dateAdded = document.createElement('p');
-    dateAdded.textContent = `Date Added: ${book.dateAdded}`;
+        const dateRead = document.createElement('p');
+        dateRead.textContent = `Date Read: ${book.dateRead}`;
 
-    bookInfo.append(title, author, pages, status, rating, dateRead, dateAdded);
+        const dateAdded = document.createElement('p');
+        dateAdded.textContent = `Date Added: ${book.dateAdded}`;
 
-    const removeBtn = document.createElement('button');
-    removeBtn.id = 'removeBook';
-    removeBtn.textContent = '✍🏻';
+        bookInfo.append(title, author, pages, status, rating, dateRead, dateAdded);
 
-    bookCard.append(bookCover, bookInfo, removeBtn);
-    bookContainer.appendChild(bookCard);
-});
+        const removeBtn = document.createElement('button');
+        removeBtn.id = 'removeBook';
+        removeBtn.textContent = '✍🏻';
 
-// TODO: Sort feature implementation
+        bookCard.append(bookCover, bookInfo, removeBtn);
+        bookContainer.appendChild(bookCard);
+    });
+}
 
+renderLibrary();
+
+// This will create the sort function
 const showAllBooksBtn = document.querySelector('#showAllBooks');
 const showWantToReadBtn = document.querySelector('#showWantToRead');
 const showCurrentlyReadingBtn = document.querySelector('#showCurrentlyReading');
 const showReadBookBtn = document.querySelector('#showRead');
+
+// TODO: Sort feature implementation
