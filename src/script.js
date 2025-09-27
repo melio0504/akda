@@ -168,7 +168,7 @@ function renderLibrary() {
         bookInfo.append(title, author, pages, status, rating, dateRead, dateAdded);
 
         const removeBtn = document.createElement('button');
-        removeBtn.id = 'removeBook';
+        removeBtn.classList.add('removeBook');
         removeBtn.textContent = '✍🏻';
 
         bookCard.append(bookCover, bookInfo, removeBtn);
