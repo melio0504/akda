@@ -96,7 +96,7 @@ function Book(title, author, pages, status, rating, dateRead, dateAdded, coverUR
     this.rating = rating;
     this.dateRead = dateRead;
     this.dateAdded = dateAdded;
-    this.coverURL = coverURL;
+    this.coverURL = coverURL || '/assets/images/default-cover.webp';
 };
 
 function addBookToLibrary(title, author, pages, status, rating, dateRead, dateAdded, coverURL) {
