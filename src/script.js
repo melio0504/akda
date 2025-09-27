@@ -2,7 +2,7 @@
 const addBookForm = document.querySelector('#addBookForm');
 const addNewBookForm = document.querySelector('#addNewBookForm');
 const openAddBookBtn = document.querySelector('#addBook');
-const closeAddBookBtn = document.querySelector('#closeBookForm');
+const closeAddBookBtn = document.querySelector('#closeBookBtn');
 
 openAddBookBtn.addEventListener('click', () => addBookForm.showModal());
 closeAddBookBtn.addEventListener('click', () => addBookForm.close());
