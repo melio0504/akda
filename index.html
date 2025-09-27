@@ -78,13 +78,13 @@
                         <h1 class="addBookHeader">Add Your New Book</h1>
 
                         <label for="bookTitle">Book Title:</label>
-                        <input type="text" name="bookTitle" id="bookTitle" placeholder="Noli Me Tángere" required>
+                        <input type="text" name="bookTitle" id="bookTitle" placeholder="Noli Me Tángere" maxlength="100" required>
 
                         <label for="bookAuthor">Book Author:</label>
-                        <input type="text" name="bookAuthor" id="bookAuthor"  placeholder="José Rizal" required>
+                        <input type="text" name="bookAuthor" id="bookAuthor"  placeholder="José Rizal" maxlength="100" required>
 
                         <label for="bookPages">Pages:</label>
-                        <input type="text" name="bookPages" id="bookPages" placeholder="444"  required>
+                        <input type="number" name="bookPages" id="bookPages" placeholder="444" required>
 
                         <label for="bookStatus">Status:</label>
                         <select name="bookStatus" id="bookStatus" required>
@@ -96,17 +96,18 @@
                         <label for="bookRating">Rating:</label>
                         <div class="bookRatingContainer">
                             <select name="bookRating" id="bookRating">
+                                <option value="-" selected>-</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="5" selected>5</option>
+                                <option value="5">5</option>
                             </select>
                             <span>/ 5</span>
                         </div>
 
                         <label for="dateRead">Date Read:</label>
-                        <input type="date" name="bookDateRead" id="bookDateRead" required>
+                        <input type="date" name="bookDateRead" id="bookDateRead">
 
                         <label for="dateAdded">Date Added:</label>
                         <input type="date" name="bookDateAdded" id="bookDateAdded" required>

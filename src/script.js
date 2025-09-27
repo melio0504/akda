@@ -8,6 +8,24 @@ openAddBookBtn.addEventListener('click', () => addBookForm.showModal());
 closeAddBookBtn.addEventListener('click', () => addBookForm.close());
 addBookForm.addEventListener('close', () => addNewBookForm.reset());
 
+// This will gets the current date
+window.addEventListener('DOMContentLoaded', () => {
+    const today = getTodayLocalTime();
+    const dateAddedInput = document.querySelector('#bookDateAdded');
+
+    dateAddedInput.value = today;
+    dateAddedInput.setAttribute('max', today);
+})
+
+function getTodayLocalTime() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
 // This will handle the form data and will pass as an argument
 document.querySelector('#addNewBookForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -94,7 +112,7 @@ function Book(title, author, pages, status, rating, dateRead, dateAdded, coverUR
     this.pages = pages;
     this.status = status;
     this.rating = rating;
-    this.dateRead = dateRead;
+    this.dateRead = dateRead || 'still reading it!';
     this.dateAdded = dateAdded;
     this.coverURL = coverURL || '/assets/images/default-cover.webp';
 };
