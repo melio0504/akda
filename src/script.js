@@ -121,8 +121,6 @@ function addBookToLibrary(title, author, pages, status, rating, dateRead, dateAd
     const newBook = new Book(title, author, pages, status, rating, dateRead, dateAdded, coverURL);
 
     myLibrary.push(newBook);
-
-    renderLibrary();
 };
 
 // Display each books
