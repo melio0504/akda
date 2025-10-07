@@ -180,7 +180,7 @@ aside {
         }
     }
 
-    #addBookForm {
+    #addBookDialog {
         position: absolute;
         width: 40vw;
         top: 3%;
