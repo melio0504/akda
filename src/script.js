@@ -1,12 +1,12 @@
 // Handle dialog behavior
-const addBookForm = document.querySelector('#addBookForm');
+const addBookDialog = document.querySelector('#addBookDialog');
 const addNewBookForm = document.querySelector('#addNewBookForm');
 const openAddBookBtn = document.querySelector('#addBook');
 const closeAddBookBtn = document.querySelector('#closeBookBtn');
 
-openAddBookBtn.addEventListener('click', () => addBookForm.showModal());
-closeAddBookBtn.addEventListener('click', () => addBookForm.close());
-addBookForm.addEventListener('close', () => addNewBookForm.reset());
+openAddBookBtn.addEventListener('click', () => addBookDialog.showModal());
+closeAddBookBtn.addEventListener('click', () => addBookDialog.close());
+addBookDialog.addEventListener('close', () => addNewBookForm.reset());
 
 // This will gets the current date
 window.addEventListener('DOMContentLoaded', () => {
@@ -43,7 +43,7 @@ document.querySelector('#addNewBookForm').addEventListener('submit', function(ev
         formData.get('bookCoverImg')
     );
 
-    addBookForm.close();
+    addBookDialog.close();
 });
 
 // The main library (Arrays) with preset personalized books
@@ -129,8 +129,6 @@ function addBookToLibrary(title, author, pages, status, rating, dateRead, dateAd
 const bookContainer = document.querySelector('.book-container');
 
 function renderLibrary() {
-    bookContainer.innerHTML = '';
-
     myLibrary.forEach(book => {
         const bookCard = document.createElement('article');
         bookCard.classList.add('book-card');
@@ -184,4 +182,18 @@ const showWantToReadBtn = document.querySelector('#showWantToRead');
 const showCurrentlyReadingBtn = document.querySelector('#showCurrentlyReading');
 const showReadBookBtn = document.querySelector('#showRead');
 
-// TODO: Sort feature implementation
+showAllBooksBtn.addEventListener('click', () => {
+    // Show all
+});
+
+showWantToReadBtn.addEventListener('click', () => {
+    // Show want to read
+});
+
+showCurrentlyReadingBtn.addEventListener('click', () => {
+    // Show currently reading
+});
+
+showReadBookBtn.addEventListener('click', () => {
+   // Show all read book 
+});
