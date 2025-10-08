@@ -170,6 +170,7 @@ function displayBooks(myLibrary) {
         const removeBtn = document.createElement('button');
         removeBtn.classList.add('removeBook');
         removeBtn.textContent = '✍🏻';
+        removeBtn.addEventListener('click', () => openEditDialog(book.id));
 
         bookCard.append(bookCover, bookInfo, removeBtn);
         bookContainer.appendChild(bookCard);
@@ -177,6 +178,64 @@ function displayBooks(myLibrary) {
 }
 
 displayBooks(myLibrary);
+
+// Handle editing and deleting books dialog
+const editBookDialog = document.querySelector('#editBookDialog');
+const editBookForm = document.querySelector('#editBookForm');
+const deleteBookBtn = document.querySelector('#deleteBookBtn');
+
+function openEditDialog(bookId) {
+    const book = myLibrary.find(b => b.id === bookId);
+
+    if (!book) return;
+
+    document.querySelector('#editBookId').value = book.id;
+    document.querySelector('#editBookTitle').value = book.title;
+    document.querySelector('#editBookAuthor').value = book.author;
+    document.querySelector('#editBookPages').value = book.pages;
+    document.querySelector('#editBookStatus').value = book.status;
+    document.querySelector('#editBookRating').value = book.rating;
+    document.querySelector('#editBookDateRead').value = book.dateRead;
+    document.querySelector('#editBookDateAdded').value = book.dateAdded;
+    document.querySelector('#editBookCoverImg').value = book.coverURL;
+
+    editBookDialog.showModal();
+}
+
+editBookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const id = document.querySelector('#editBookId').value;
+    const bookIndex = myLibrary.findIndex(b => b.id === id);
+
+    if (bookIndex !== -1) {
+        myLibrary[bookIndex] = {
+        ...myLibrary[bookIndex],
+        title: document.querySelector('#editBookTitle').value,
+        author: document.querySelector('#editBookAuthor').value,
+        pages: document.querySelector('#editBookPages').value,
+        status: document.querySelector('#editBookStatus').value,
+        rating: document.querySelector('#editBookRating').value,
+        dateRead: document.querySelector('#editBookDateRead').value,
+        dateAdded: document.querySelector('#editBookDateAdded').value,
+        coverURL: document.querySelector('#editBookCoverImg').value
+        };
+    }
+
+    displayBooks(myLibrary);
+    editBookDialog.close();
+})
+
+deleteBookBtn.addEventListener('click', () => {
+    const id = document.querySelector('#editBookId').value;
+    const index = myLibrary.findIndex(b => b.id === id);
+    if (index !== -1) {
+        myLibrary.splice(index, 1);
+    }
+
+    displayBooks(myLibrary);
+    editBookDialog.close();
+});
 
 // Sort the books by status
 const showAllBooksBtn = document.querySelector('#showAllBooks');
