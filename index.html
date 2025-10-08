@@ -78,16 +78,16 @@
                         <h1 class="addBookHeader">Add Your New Book</h1>
 
                         <label for="bookTitle">Book Title:</label>
-                        <input type="text" name="bookTitle" id="bookTitle" placeholder="Noli Me Tángere" maxlength="100" required>
+                        <input type="text" id="bookTitle" placeholder="Noli Me Tángere" maxlength="100" required>
 
                         <label for="bookAuthor">Book Author:</label>
-                        <input type="text" name="bookAuthor" id="bookAuthor"  placeholder="José Rizal" maxlength="100" required>
+                        <input type="text" id="bookAuthor"  placeholder="José Rizal" maxlength="100" required>
 
                         <label for="bookPages">Pages:</label>
-                        <input type="number" name="bookPages" id="bookPages" placeholder="444" required>
+                        <input type="number" id="bookPages" placeholder="444" required>
 
                         <label for="bookStatus">Status:</label>
-                        <select name="bookStatus" id="bookStatus" required>
+                        <select id="bookStatus" required>
                             <option value="Completed">Completed</option>
                             <option value="Currently Reading">Currently Reading</option>
                             <option value="Want to Read">Want to Read</option>
@@ -96,7 +96,7 @@
                         <div class="bookRatingContainer">
                             <label for="bookRating">Rating:</label>
 
-                            <select name="bookRating" id="bookRating">
+                            <select id="bookRating">
                                 <option value="-" selected>-</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -108,17 +108,64 @@
                         </div>
 
                         <label for="bookDateRead">Date Read:</label>
-                        <input type="date" name="bookDateRead" id="bookDateRead">
+                        <input type="date" id="bookDateRead">
 
                         <label for="bookDateAdded">Date Added:</label>
-                        <input type="date" name="bookDateAdded" id="bookDateAdded" required>
+                        <input type="date" id="bookDateAdded" required>
 
                         <label for="bookCoverImg">Book Cover Image URL (Optional):</label>
-                        <input type="text" name="bookCoverImg" id="bookCoverImg" placeholder="Image URL Address">
+                        <input type="text" id="bookCoverImg" placeholder="Image URL Address">
                         
                         <div class="buttonContainer">
                             <button type="submit" id="addBookBtn">Add</button>
                             <button type="button" id="closeBookBtn">Close</button>
+                        </div>
+                    </form>
+                </dialog>
+                <dialog closedby="any" id="editBookDialog">
+                    <form method="dialog" id="editBookForm">
+                        <h1 class="addBookHeader">Edit or Delete Book</h1>
+
+                        <input type="hidden" id="editBookId">
+
+                        <label for="editBookTitle">Book Title:</label>
+                        <input type="text" id="editBookTitle" required>
+
+                        <label for="editBookAuthor">Book Author:</label>
+                        <input type="text" id="editBookAuthor" required>
+
+                        <label for="editBookPages">Pages:</label>
+                        <input type="number" id="editBookPages" required>
+
+                        <label for="editBookStatus">Status:</label>
+                        <select id="editBookStatus" required>
+                            <option value="Completed">Completed</option>
+                            <option value="Currently Reading">Currently Reading</option>
+                            <option value="Want to read">Want to read</option>
+                        </select>
+
+                        <label for="editBookRating">Rating:</label>
+                        <select id="editBookRating">
+                            <option value="-">-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+
+                        <label for="editBookDateRead">Date Read:</label>
+                        <input type="date" id="editBookDateRead">
+
+                        <label for="editBookDateAdded">Date Added:</label>
+                        <input type="date" id="editBookDateAdded" required>
+
+                        <label for="editBookCoverImg">Book Cover Image URL:</label>
+                        <input type="text" id="editBookCoverImg" placeholder="Image URL Address">
+
+                        <div class="buttonContainer">
+                            <button type="submit" id="updateBookBtn">Update</button>
+                            <button type="button" id="deleteBookBtn">Delete</button>
                         </div>
                     </form>
                 </dialog>
