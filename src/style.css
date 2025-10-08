@@ -165,6 +165,10 @@ aside {
         cursor: pointer;
         font: var(--font-family);
         color: var(--color-green);
+
+        &:hover {
+            color: var(--color-dark);
+        }
     }
 
     #addBook {
