@@ -55,8 +55,8 @@ const myLibrary = [
         pages: '444',
         status: 'Completed',
         rating: '5',
-        dateRead: '09-18-2025',
-        dateAdded: '09-21-2025',
+        dateRead: '2025-02-03',
+        dateAdded: '2025-01-24',
         coverURL: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1309199939i/418285.jpg'
     }, 
     {
@@ -66,8 +66,8 @@ const myLibrary = [
         pages: '110',
         status: 'Completed',
         rating: '4',
-        dateRead: '09-20-2025',
-        dateAdded: '09-12-2025',
+        dateRead: '2025-02-05',
+        dateAdded: '2025-02-03',
         coverURL: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348164414i/1848283.jpg'
     },
     {
@@ -77,8 +77,8 @@ const myLibrary = [
         pages: '608',
         status: 'Currently Reading',
         rating: '4',
-        dateRead: '06-25-2025',
-        dateAdded: '04-10-2025',
+        dateRead: '2025-03-06',
+        dateAdded: '2025-03-01',
         coverURL: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327868529i/18254.jpg'
     }, 
     {
@@ -88,8 +88,8 @@ const myLibrary = [
         pages: '320',
         status: 'Completed',
         rating: '5',
-        dateRead: '01-25-2025',
-        dateAdded: '07-10-2024',
+        dateRead: '2025-03-30',
+        dateAdded: '2025-03-15',
         coverURL: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1615094578i/8127.jpg'
     },
     {
@@ -99,8 +99,8 @@ const myLibrary = [
         pages: '1216',
         status: 'Want to read',
         rating: '5',
-        dateRead: '01-25-2025',
-        dateAdded: '07-10-2024',
+        dateRead: '2025-05-05',
+        dateAdded: '2025-07-23',
         coverURL: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg'
     }
 ];
