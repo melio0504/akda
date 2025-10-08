@@ -184,7 +184,7 @@ aside {
         }
     }
 
-    #addBookDialog {
+    #addBookDialog, #editBookDialog {
         position: absolute;
         width: 40vw;
         top: 3%;
@@ -201,7 +201,7 @@ aside {
             backdrop-filter: blur(2px);
         }
 
-        #addNewBookForm {
+        #addNewBookForm, #editBookForm {
             display: flex;
             flex-direction: column;
             gap: 10px;
