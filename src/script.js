@@ -1,4 +1,4 @@
-// Handle dialog behavior
+// Handle adding new book dialog
 const addBookDialog = document.querySelector('#addBookDialog');
 const addNewBookForm = document.querySelector('#addNewBookForm');
 const openAddBookBtn = document.querySelector('#addBook');
@@ -8,7 +8,7 @@ openAddBookBtn.addEventListener('click', () => addBookDialog.showModal());
 closeAddBookBtn.addEventListener('click', () => addBookDialog.close());
 addBookDialog.addEventListener('close', () => addNewBookForm.reset());
 
-// This will gets the current date
+// Gets the current date to insert automatically inside the form
 window.addEventListener('DOMContentLoaded', () => {
     const today = getTodayLocalTime();
     const dateAddedInput = document.querySelector('#bookDateAdded');
@@ -46,7 +46,7 @@ document.querySelector('#addNewBookForm').addEventListener('submit', function(ev
     addBookDialog.close();
 });
 
-// The main library (Arrays) with preset personalized books
+// Arrays with preset personalized books
 const myLibrary = [
     {
         id: '3197f5b0-11a4-4050-a14c-4fa964dee160',
@@ -121,12 +121,16 @@ function addBookToLibrary(title, author, pages, status, rating, dateRead, dateAd
     const newBook = new Book(title, author, pages, status, rating, dateRead, dateAdded, coverURL);
 
     myLibrary.push(newBook);
+
+    displayBooks(myLibrary);
 };
 
 // Display each books
 const bookContainer = document.querySelector('.book-container');
 
-function renderLibrary() {
+function displayBooks(myLibrary) {
+    bookContainer.innerHTML = '';
+
     myLibrary.forEach(book => {
         const bookCard = document.createElement('article');
         bookCard.classList.add('book-card');
@@ -169,29 +173,39 @@ function renderLibrary() {
 
         bookCard.append(bookCover, bookInfo, removeBtn);
         bookContainer.appendChild(bookCard);
-    });
+    })
 }
 
-renderLibrary();
+displayBooks(myLibrary);
 
-// This will create the sort function
+// Sort the books by status
 const showAllBooksBtn = document.querySelector('#showAllBooks');
 const showWantToReadBtn = document.querySelector('#showWantToRead');
 const showCurrentlyReadingBtn = document.querySelector('#showCurrentlyReading');
 const showReadBookBtn = document.querySelector('#showRead');
 
-showAllBooksBtn.addEventListener('click', () => {
-    // Show all
-});
+showAllBooksBtn.addEventListener('click', () => { displayBooks(myLibrary);});
 
-showWantToReadBtn.addEventListener('click', () => {
-    // Show want to read
-});
+showWantToReadBtn.addEventListener('click', () => { displayOnlyWantToRead();});
 
-showCurrentlyReadingBtn.addEventListener('click', () => {
-    // Show currently reading
-});
+showCurrentlyReadingBtn.addEventListener('click', () => { displayOnlyCurrentlyReading();});
 
-showReadBookBtn.addEventListener('click', () => {
-   // Show all read book 
-});
+showReadBookBtn.addEventListener('click', () => { displayOnlyRead();});
+
+function displayOnlyWantToRead() {
+    const wantToRead = myLibrary.filter(book => book.status === 'Want to read');
+
+    displayBooks(wantToRead);
+}
+
+function displayOnlyCurrentlyReading() {
+    const currentlyReading = myLibrary.filter(book => book.status === 'Currently Reading');
+
+    displayBooks(currentlyReading);
+}
+
+function displayOnlyRead() {
+    const onlyRead = myLibrary.filter(book => book.status === 'Completed');
+
+    displayBooks(onlyRead);
+}
