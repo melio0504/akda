@@ -105,16 +105,18 @@ const myLibrary = [
     }
 ];
 
-function Book(title, author, pages, status, rating, dateRead, dateAdded, coverURL) {
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-    this.rating = rating;
-    this.dateRead = dateRead || 'still reading it!';
-    this.dateAdded = dateAdded;
-    this.coverURL = coverURL || '/assets/images/default-cover.webp';
+class Book {
+    constructor(title, author, pages, status, rating, dateRead, dateAdded, coverURL) {
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+        this.rating = rating;
+        this.dateRead = dateRead || 'still reading it!';
+        this.dateAdded = dateAdded;
+        this.coverURL = coverURL || '/assets/images/default-cover.webp';
+    };
 };
 
 function addBookToLibrary(title, author, pages, status, rating, dateRead, dateAdded, coverURL) {
